@@ -1,17 +1,27 @@
 # ActionSchemaSplitting
 
+Supported platforms
+Linux: is the main platform for which the algorithm is developed. 
+
+Dependencies:
+To obtain and compile the algorithm, you need any version of Git, a C compiler, a GNU make, flex and bison. 
+We have successfully compiled the planner with:
+	GCC 4.8.4
+	Flex 2.5.35
+	Bison < 3.0.2
+
 Action Schema Splitting Features:
 - supports Strips domain
 - supports ADL domains
 
-
+Description:
 The algorithm sorts the action schemas into a ranking under notion of splitability.
 When the splitabilitity coefficient of an action schema is close to 1 means the 
 schema is more suitable to be "spliteable", while if it is close to 0, the schema 
 is less likely to be optimized by the technique. Then you can set which of the 
 first actions in the ranking you want to divide to.
 
-The algorithm is called in the following way in the command line:
+The algorithm is called in the command line, like this:
 
 ./splitting -o <original-domain> -f <original-task> <split-domain> <split-task> <gamma> <threshold>
 
