@@ -130,8 +130,12 @@ void SplitOutput_Atom(FILE *f, Fact *fact, Operator *op){
 		  if (fact->args[j] >= 0)
 			  fprintf(f, " %s", gconstants[fact->args[j]]);
 		  else{
-			  int var = -fact->args[j];
-			  fprintf(f, " %s", op->var_names[var-1]);
+			  int var = fact->args[j];
+			  if (ServicesAction_isFreeVariable(op,var)){
+				  fprintf(f, " %s", op->var_names[-var-1]);
+			  }else{
+				  fprintf(f, " ?x%d", -var);
+			  }
 		  }
 	  }
 	  fprintf(f, ")");
@@ -482,6 +486,7 @@ void SplitOutput_SplitabilityGraph(char *splitability_graph_path){
 	fclose(f);
 
 }
+
 
 
 
